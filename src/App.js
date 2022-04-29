@@ -1,11 +1,18 @@
 import './App.css';
+import {Component} from 'react';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
 
-    </div>
-  );
+class App extends Component {
+
+  render() {
+
+    return (
+      <div>
+  
+      </div>
+    );
+  }
 }
 
 export default App;
