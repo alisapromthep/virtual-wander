@@ -6,9 +6,7 @@ function HomePage({submitHandler}) {
     
     const onSubmit = (event)=>{
         
-        submitHandler(event)
-
-
+        submitHandler(event);
     }
 
     return (

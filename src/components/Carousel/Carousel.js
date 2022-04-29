@@ -17,9 +17,12 @@ class Carousel extends Component {
 
     leftHandler = (event)=>{
         event.preventDefault(); 
-        console.log(`clicking left`);
 
-        this.index --;
+        if (this.index === 0) {
+            this.index = this.videoArray.length-1;
+        } else {
+            this.index --;
+        }
 
         this.setState({
             videoId: this.videoArray[this.index]
@@ -28,9 +31,12 @@ class Carousel extends Component {
 
     rightHandler = (event)=>{
         event.preventDefault(); 
-        console.log(`clicking right`)
 
-        this.index ++;
+        if (this.index === this.videoArray.length-1) {
+            this.index = 0;
+        } else {
+            this.index ++;
+        }
 
         this.setState({
             videoId: this.videoArray[this.index]
