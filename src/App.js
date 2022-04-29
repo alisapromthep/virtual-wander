@@ -3,31 +3,44 @@ import HomePage from './pages/HomePage/HomePage';
 import VideoPlayer from './pages/VideoPlayer/VideoPlayer';
 import {Component} from 'react';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
+import axios from 'axios';
 
+const API_URL = 'http://localhost:7777/videos'
 
 class App extends Component {
 
   state = {
-    city: null,
-    transport: null,
     isFormSubmit: false,
+    videoArray: [],
   }
 
 
   submitHandler = (event)=>{
     event.preventDefault();
 
-    console.log(event.target.city.value)
-    console.log(event.target.transport.value)
-
     const selectCity = event.target.city.value;
     const selectTransport = event.target.transport.value;
 
-    this.setState({
-      city: selectCity,
-      transport: selectTransport,
-      isFormSubmit: true,
-    })
+    axios
+      .get(`${API_URL}`)
+      .then((response)=>{
+          const videoData = response.data 
+          console.log(videoData)
+
+          const videoArray = videoData.filter((video)=>{
+              if (video.city === selectCity && video.mode === selectTransport) {
+                  return true 
+              } 
+          })
+          console.log(videoArray)
+
+          this.setState({
+            isFormSubmit: true,
+            videoArray: videoArray,
+          })
+
+      })
+      .catch((error)=>{console.log(`error getting data`)})
 
   }
 
@@ -35,8 +48,7 @@ class App extends Component {
 
     if (this.state.isFormSubmit) {
       return (<VideoPlayer 
-        city={this.state.city} 
-        transport={this.state.transport} />)
+        videoArray={this.state.videoArray} />)
     }
 
     return (

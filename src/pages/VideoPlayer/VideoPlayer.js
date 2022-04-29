@@ -1,19 +1,16 @@
-import React, { Component } from 'react';
 import Carousel from '../../components/Carousel/Carousel';
 
-class VideoPlayer extends Component {
+function VideoPlayer({videoArray}) {
 
 
-    render() {
-        console.log(this.props)
         return (
             <div className='videoplayer'>
                 <div className='videoplayer__container'>
-                    <Carousel />
+                    <Carousel videoArray={videoArray}/>
                 </div>
             </div>
         );
     }
-}
+
 
 export default VideoPlayer;
