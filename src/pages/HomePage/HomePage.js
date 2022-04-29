@@ -2,20 +2,19 @@ import React from 'react';
 import './HomePage.scss';
 
 
-function HomePage(props) {
+function HomePage({submitHandler}) {
     
-    const submitHandler = (event)=>{
-        event.preventDefault();
+    const onSubmit = (event)=>{
+        
+        submitHandler(event)
 
-        console.log(event.target.city.value)
-        console.log(event.target.transport.value)
 
     }
 
     return (
         <main>
             <div className='option__container'>
-                <form onSubmit={submitHandler}>
+                <form onSubmit={onSubmit}>
                 <label htmlFor='city'> Where to today?</label>
                 <select id='city' name='city'>
                     <option value='NYC'>NYC</option>

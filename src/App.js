@@ -7,13 +7,26 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 class App extends Component {
 
-//   const submitHandler = (event)=>{
-//     event.preventDefault();
+  state = {
+    city: null,
+    transport: null,
+  }
 
-//     console.log(event.target.city.value)
-//     console.log(event.target.transport.value)
 
-// 
+  submitHandler = (event)=>{
+    event.preventDefault();
+
+    console.log(event.target.city.value)
+    console.log(event.target.transport.value)
+
+    const selectCity = event.target.city.value;
+    const selectTransport = event.target.transport.value;
+
+    this.setState({
+      city: selectCity,
+      transport: selectTransport,
+    })
+  }
 
   render() {
 
@@ -21,8 +34,18 @@ class App extends Component {
       <div>
         <BrowserRouter>
         <Switch>
-          <Route path="/" exact component={HomePage}/>
-          <Route path="/video" component={VideoPlayer}/> 
+          <Route path="/" exact 
+          render={()=>{
+            return (
+              <HomePage submitHandler={this.submitHandler}/>
+            )
+          }}/>
+          <Route path="/video" render={()=>{
+            return (
+              <VideoPlayer city={this.state.city} 
+              transport={this.state.transport} />
+            )
+          }}/> 
         </Switch>
         </BrowserRouter>
       </div>
