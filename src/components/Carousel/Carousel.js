@@ -1,33 +1,55 @@
 import React from 'react';
 import './Carousel.scss';
+import {Component} from 'react';
 
-function Carousel(props) {
+class Carousel extends Component {
 
-    const arrowLeft = `<`;
-    const arrowRight = `>`;
+    arrowLeft = `<`;
+    arrowRight = `>`;
 
-    const videoArray = [`VideoOne`, `VideoTwo`, `VideoThree`]
+    videoArray = [`JG3jZfbchPg`, `0QMt8iHtbDI`, `IWNa18KXmmg`]
 
-    const image = "https://i.imgur.com/7rD6Mf6.jpg"
+    index = 0;
 
+    state = {
+        videoId: this.videoArray[0]
+    }
 
-    return (
-        <div className='carousel'>
-            <button className='carousel__button carousel__button--left'> {arrowLeft} </button>
-            <article className='carousel__container'>
-                <ul>
-                    <img src={image} />
-                    {/* {videoArray.map((video)=>{
-                        return <li><video className='carousel__video' poster={image}></video></li>
-                    })} */}
-                </ul>
-            </article>
-            <button className='carousel__button carousel__button--right'> {arrowRight} </button>
-            
+    leftHandler = (event)=>{
+        event.preventDefault(); 
+        console.log(`clicking left`);
 
-            
-        </div>
-    );
+        this.index --;
+
+        this.setState({
+            videoId: this.videoArray[this.index]
+        })
+    }
+
+    rightHandler = (event)=>{
+        event.preventDefault(); 
+        console.log(`clicking right`)
+
+        this.index ++;
+
+        this.setState({
+            videoId: this.videoArray[this.index]
+        })
+    }
+
+    render() {
+        return (
+            <div className='carousel'>
+                <button className='carousel__button carousel__button--left' onClick={this.leftHandler}> {this.arrowLeft} </button>
+                <article className='carousel__container'>
+                    <iframe width="420" height="315" 
+                    src={`https://www.youtube.com/embed/${this.state.videoId}`}>
+                    </iframe> 
+                </article>
+                <button className='carousel__button carousel__button--right' onClick={this.rightHandler}> {this.arrowRight} </button>
+            </div>
+        );
+    }
 }
 
 export default Carousel;

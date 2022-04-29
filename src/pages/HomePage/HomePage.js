@@ -7,7 +7,7 @@ function HomePage(props) {
     return (
         <main>
             <div className='option__container'>
-                {/* <CityOption/> */}
+                <CityOption/>
                 <TransportOption />
             </div>
         </main>
