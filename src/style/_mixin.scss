@@ -1,0 +1,17 @@
+@mixin page-center {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+@mixin button {
+    list-style: none;
+    font-size: 1rem;
+    background-color: transparent;
+    padding: 1rem;
+    margin: 1rem;
+    width: 12rem;
+    
+}

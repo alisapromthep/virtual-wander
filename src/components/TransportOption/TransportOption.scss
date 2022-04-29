@@ -1,0 +1,20 @@
+@use '../../style/mixin' as *;
+
+.transport {
+
+    @include page-center;
+
+    &__title {
+        color: azure;
+    }
+    
+    &__button {
+        @include button;
+
+        &-container {
+            display: flex;
+        }
+
+        
+    }
+}
