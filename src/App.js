@@ -7,6 +7,14 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 class App extends Component {
 
+//   const submitHandler = (event)=>{
+//     event.preventDefault();
+
+//     console.log(event.target.city.value)
+//     console.log(event.target.transport.value)
+
+// 
+
   render() {
 
     return (
