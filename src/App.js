@@ -2,7 +2,7 @@ import './App.css';
 import HomePage from './pages/HomePage/HomePage';
 import VideoPlayer from './pages/VideoPlayer/VideoPlayer';
 import {Component} from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 
 
 class App extends Component {
@@ -10,6 +10,7 @@ class App extends Component {
   state = {
     city: null,
     transport: null,
+    isFormSubmit: false,
   }
 
 
@@ -25,10 +26,18 @@ class App extends Component {
     this.setState({
       city: selectCity,
       transport: selectTransport,
+      isFormSubmit: true,
     })
+
   }
 
   render() {
+
+    if (this.state.isFormSubmit) {
+      return (<VideoPlayer 
+        city={this.state.city} 
+        transport={this.state.transport} />)
+    }
 
     return (
       <div>
@@ -40,12 +49,6 @@ class App extends Component {
               <HomePage submitHandler={this.submitHandler}/>
             )
           }}/>
-          <Route path="/video" render={()=>{
-            return (
-              <VideoPlayer city={this.state.city} 
-              transport={this.state.transport} />
-            )
-          }}/> 
         </Switch>
         </BrowserRouter>
       </div>

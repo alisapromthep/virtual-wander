@@ -26,7 +26,7 @@ function HomePage({submitHandler}) {
                     <option value='walk'>walk</option>
                     <option value='bike'>bike</option>
                 </select>
-                <button type='submit'>Start the journey</button>
+                <button type='submit'>Start journey</button>
                 </form>
             </div>
         </main>
