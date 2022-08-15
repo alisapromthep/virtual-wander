@@ -1,0 +1,51 @@
+@use '../../style/mixin' as *;
+
+li {
+    list-style: none;
+}
+
+.carousel {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    
+
+    &__container {
+        display: flex;
+        border-radius: 5px;
+        border: 1px #0B0C11 solid;
+    }
+
+
+    &__button {
+        @include button;
+        font-size: 2rem;
+        width: 5%;
+        border: none;
+        background-color: transparent;
+        
+    }
+
+    &__container {
+        background-color: white;
+        padding: 1rem;
+        width: 46vw;
+        
+        @include page-center;
+
+    }
+
+    &__video {
+        
+        width: 80%;
+        height: 12rem;
+
+    }
+}
+
+iframe {
+    border: none;
+    border-radius: 5px;
+}
